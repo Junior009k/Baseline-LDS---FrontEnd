@@ -1,0 +1,34 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+@rendermode InteractiveServer
+<PageTitle>Home</PageTitle>
+
+
+
+<h1>Has iniciado sesion</h1>
+
+
+@code {
+    public string sesion="0";
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Este código se ejecuta solo después del primer renderizado
+            sesion = await JS.InvokeAsync<string>("localStorageInterop.getItem", "sesion");
+            Console.WriteLine(sesion == "1");
+            @if (sesion == "1")
+            {
+                
+            }
+            else
+            {
+                //Console.WriteLine(JS.InvokeAsync<string>("localStorageInterop.getItem", "token"));
+                NavigationManager.NavigateTo("/login");
+            }
+        }
+    }
+
+}
+
