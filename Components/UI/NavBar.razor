@@ -1,0 +1,18 @@
+﻿@inject IJSRuntime JS
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+        <form class="d-flex">
+            <button class="btn btn-outline-success" @onclick="Logout" type="submit">Logout</button>
+        </form>
+    </div>
+</nav>
+
+@code {
+    public async void Logout()
+    {
+        await JS.InvokeVoidAsync("localStorageInterop.clear");
+        
+    }
+}

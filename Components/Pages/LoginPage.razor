@@ -35,7 +35,6 @@
     {
         var builder = WebApplication.CreateBuilder();
         responseModel response=await apiUser.Inicializar(builder.Build().Configuration["Api"],username, password);
-        responseModel response2 = await apiUser.Inicializar(builder.Build().Configuration["Api"], username, password);
 
         Console.WriteLine(response.value.message);
         Console.WriteLine(username + "hola" + password);

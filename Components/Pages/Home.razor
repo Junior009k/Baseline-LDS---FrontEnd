@@ -3,14 +3,57 @@
 @inject IJSRuntime JS
 @rendermode InteractiveServer
 <PageTitle>Home</PageTitle>
+@using Baseline_LDS___FrontEnd.Components.UI
+@using Microsoft.AspNetCore.Components.Web
 
+<PageTitle>Inicio</PageTitle>
 
-
-<h1>Has iniciado sesion</h1>
-
+<div class="container mt-5">
+    <NavBar />
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido a BlazorApp</h1>
+        <p class="lead">Esta es una simple plantilla de página de inicio usando Blazor y Bootstrap.</p>
+        <hr class="my-4">
+        <p>Blazor permite crear aplicaciones web interactivas utilizando C# en lugar de JavaScript.</p>
+        <a class="btn btn-primary btn-lg" href="https://blazor.net" role="button" target="_blank">Aprende más</a>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/sample1.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Características</h5>
+                    <p class="card-text">Descubre las características principales de Blazor y cómo puede ayudarte en el desarrollo web.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/sample2.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Documentación</h5>
+                    <p class="card-text">Encuentra la documentación completa y detallada para comenzar con Blazor.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="images/sample3.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Comunidad</h5>
+                    <p class="card-text">Únete a la comunidad de desarrolladores de Blazor y comparte tus experiencias.</p>
+                    <a href="#" class="btn btn-primary">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     public string sesion="0";
+    public string username = "";
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

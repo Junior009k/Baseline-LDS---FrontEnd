@@ -85,3 +85,13 @@ button {
     color: red;
     margin-top: 15px;
 }
+
+/* Estilos personalizados */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+}
