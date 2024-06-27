@@ -95,6 +95,45 @@ namespace Baseline_LDS___FrontEnd.Components.API.Config
             }
         }
 
+        public async Task<responseModel> Register(string URL, string username, string password, string name, string id_perfil)
+        {
+
+            Console.WriteLine(URL);
+            // Datos que deseas enviar en la petición POST
+            var postData = new
+            {
+                username,
+                password,
+                name,
+                id_perfil
+
+            };
+
+            // Convertir los datos a formato JSON
+            string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(postData);
+
+            // Crear el contenido de la petición
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            // Enviar la petición POST
+            HttpResponseMessage response = await client.PostAsync(URL + "/auth/register", content);
+
+            // Leer y manejar la respuesta
+            if (response.IsSuccessStatusCode)
+            {
+                string responseData = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("Respuesta del servidor: " + responseData);
+
+                return getObject(responseData);
+            }
+            else
+            {
+                Console.WriteLine("Error: " + response.StatusCode);
+                return null;
+            }
+        }
+
+
         public responseModel getObject(string response)
         {
             responseModel model = JsonConvert.DeserializeObject<responseModel>(response);
